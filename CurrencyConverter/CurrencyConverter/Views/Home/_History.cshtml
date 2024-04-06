@@ -1,0 +1,30 @@
+﻿<div class="jumbotron" style="margin-top:20px;">
+    <h2 class="title">Currency History</h2>
+
+    <div class="row">
+        <div class="col-sm-1" style="width:100px;">
+            <span>Currency :</span>
+        </div>
+        <div class="col-sm-2">
+            <select class="currency" id="historyCurrency" required>
+                @foreach (var item in ViewBag.CurrencyList)
+                {
+                    <option data-value='{"currency":"@item.Name","rate":"@item.Rate"}'>@item.Name</option>
+                }
+            </select>
+        </div>   
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-sm-1" style="width:100px;">
+            <span>Amount :</span>
+        </div>
+        <div class="col-sm-3">
+            <input id="historyAmount" type="number" required min="1" />
+        </div>
+        <div class="col-sm-2" style="margin-left:-50px;">
+            <button id="historyButton" class="button">Exchange</button>
+        </div>
+    </div>
+    <div id="target" style="margin-top:20px;">
+    </div>
+</div>

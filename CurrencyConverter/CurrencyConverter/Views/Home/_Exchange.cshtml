@@ -1,0 +1,53 @@
+﻿
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "exchange" }))
+{
+<div class="jumbotron" style="margin-top:20px;">
+    <h2 class="title">Currency Conversion</h2>
+    <div class="row">
+        <div class="col-sm-1">
+            <span>From :</span>
+        </div>
+        <div class="col-sm-3">
+            <select class="currency" id="currencyFrom" required>
+                @foreach (var item in ViewBag.CurrencyList)
+                {
+                    <option data-value='{"currency":"@item.Name","rate":"@item.Rate"}'>@item.Name</option>
+                }
+            </select>
+            <label hidden id="rateFrom"></label>
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-sm-1">
+            <span>To :</span>
+        </div>
+        <div class="col-sm-3">
+            <select class="currency" id="currencyTo" required>
+                @foreach (var item in ViewBag.CurrencyList)
+                {
+                    <option data-value='{"currency":"@item.Name","rate":"@item.Rate"}'>@item.Name</option>
+                }
+            </select>
+            <label hidden id="rateTo"></label>
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-sm-1">
+            <span>Amount :</span>
+        </div>
+        <div class="col-sm-3">
+            <input id="currencyAmount" type="number" required min="1" />
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-sm-2">
+            <input id="exchangeButton" type="submit" class="button" value="Exchange">
+        </div>
+        <div class="col-sm-2">
+            <label id="currencyResult"></label>
+        </div>
+    </div>
+    <label id="currencyError"></label>
+</div>
+}
+
